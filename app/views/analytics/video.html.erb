@@ -1,0 +1,428 @@
+<style>
+  .thumbnail-img h1, .thumbnail-img, .tumbnail-img i{
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  }
+</style>
+<!--Breadcrumb-->
+  <div class="breadcrumb clearfix">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+      <li><a href="index.html">Dashboard</a></li>
+      <li class="active">조회수 관리</li>
+    </ul>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="page-header">
+    <h1><%=@video.celeb.name%><small>#<%=@video.celeb.hashtag%></small></h1>
+  </div>
+        
+  <div class="col-md-6 bootstrap-grid"> 
+    <!-- New widget -->
+    <div class="powerwidget powerwidget-as-portlet powerwidget-as-portlet-white" id="widget5" data-widget-editbutton="false">
+      <header>
+        <h2><%=@video.title%><small>보러가기</small></h2>
+      </header>
+      <div class="inner-spacer nopadding">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active"style="background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%),url('/images/exo.jpg');background-position: center top;background-size: 100% auto;">
+                <div class="portlet-profile thumbnail-img">
+                  <a href="https://facebook.com/<%=@video.facebook_clip.source_id%>" style="color:white;"><div class="user-img " style="font-size:5em;"><i class="fa fa-facebook" ></i></div></a>
+                  <h1>Facebook</h1>
+                  View: <%=@facebook["count"]%> | like: <%=@facebook["like"]%>
+                </div>
+             </div>
+             <div class="item "style="background-image:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%),url('/images/exo.jpg');background-position: center top;background-size: 100% auto;">
+                <div class="portlet-profile thumbnail-img">
+                  <div class="user-img " style="font-size:5em;"><i class="fa fa-youtube"></i></div>
+                  <h1>Youtube</h1>
+                  Followers: 451 | Friends: 45
+                </div>
+             </div>
+          </div>
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+      </div>
+    </div>
+    <!-- /New widget --> 
+  </div>
+          
+  <div class="col-md-6 bootstrap-grid"> 
+    <div class="powerwidget powerwidget-as-portlet-white" id="social" data-widget-editbutton="false">
+      <header>
+        <h2><%=@video.title%><small>on SNS</small></h2>
+      </header>
+      <div class="inner-spacer">
+        <div class="flotchart-container">
+          <div id="sns-chart" class="flotchart-placeholder"></div>
+        </div>
+        
+      </div>
+    </div> 
+  </div>
+  <!-- End Widget -->   
+
+
+  <div class="row" id="powerwidgets">
+    <div class="col-md-12">
+      <div class="col-md-4 col-sm-6 bootstrap-grid"> 
+        
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet" id="widget1" data-widget-editbutton="false" style="background-color:#3b5998; color:white;">
+          <header> </header>
+          <div class="inner-spacer nopadding" style="background-color:#3b5998;">
+            <div class="portlet-big-icon animated bounceIn text-white"><i class="fa entypo-facebook-circled"></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-4 col-sm-4 col-xs-4"><strong><%=@facebook["count"]%></strong><small>View</small></li>
+              <li class="col-md-4 col-sm-4 col-xs-4"><strong><%=@video.facebook["like"]%></strong><small>Like</small></li>
+              <li class="col-md-4 col-sm-4 col-xs-4"><strong><%=@facebook["comment"]%></strong><small>Comment</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+        
+      </div>
+      <!-- /Inner Row Col-md-3 -->
+      
+      <div class="col-md-4 col-sm-6 bootstrap-grid"> 
+        
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet " id="widget2" data-widget-editbutton="false" style="background-color:#00aced; color:white;">
+          <header> </header>
+          <div class="inner-spacer nopadding" style="background-color:#00aced;">
+            <div class="portlet-big-icon"><i class="fa fa-twitter"></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-6 col-sm-6 col-xs-6"><strong>232</strong><small>view</small></li>
+              <li class="col-md-6 col-sm-6 col-xs-6"><strong>232</strong><small>Retweet</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+        
+      </div>
+      <!-- /Inner Row Col-md-3 -->
+      
+      <div class="col-md-4 col-sm-6 bootstrap-grid"> 
+        
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet " id="widget3" data-widget-editbutton="false" style="background-color:#bb0000; color:white;">
+          <header> </header>
+          <div class="inner-spacer nopadding"style="background-color:#bb0000;">
+            <div class="portlet-big-icon"><i class="fa fa-youtube"></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-12 col-sm-12 col-xs-12"><strong>2791</strong><small>view</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+      </div>
+      <!-- /Inner Row Col-md-3 -->
+    </div>
+
+    <div class="col-md-12">
+      <!-- /Inner Row Col-md-3 -->
+      <div class="col-md-4 col-sm-6"> 
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet" id="widget4" data-widget-editbutton="false" style="background-color:#F06A93; color:white;">
+          <header> </header>
+          <div class="inner-spacer nopadding" style="background-color:#F06A93; color:white;">
+            <div class="portlet-big-icon" style="padding-top:5px;padding-bottom:10px;"><i><img src="/images/everyshot.svg" style="height:50px;"/></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong>211</strong><small>view</small></li>
+              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong>211</strong><small><i class="fa fa-heart"></i> 좋아요</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+        
+      </div>
+      <!-- /Inner Row Col-md-3 -->
+    
+      <div class="col-md-4 col-sm-6"> 
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet" id="widget4" data-widget-editbutton="false" style="background-color:#23b300; color:white;">
+          <header> </header>
+          <div class="inner-spacer nopadding" style="background-color:#23b300;">
+            <div class="portlet-big-icon" style="padding-top:15px;padding-bottom:20px;"><i><img src="/images/naver_logo.png" style="height:30px;"/></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-12 col-sm-12 col-xs-12"><strong>1000</strong><small>view</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+      </div>
+      <!-- /Inner Row Col-md-3 -->
+
+      <div class="col-md-4 col-sm-6"> 
+        <!-- New widget -->
+        <div class="powerwidget powerwidget-as-portlet" id="widget4" data-widget-editbutton="false" style="background-color:#fff000; color:#393939;">
+          <header> </header>
+          <div class="inner-spacer nopadding" style="background-color:#fff000;">
+            <div class="portlet-big-icon" style="padding-top:15px;padding-bottom:20px;"><i><img src="/images/daumkakao.png" /></i></div>
+            <ul class="portlet-bottom-block">
+              <li class="col-md-12 col-sm-12 col-xs-12" style="background:none;"><strong>211</strong><small>view</small></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /New widget --> 
+      </div>
+
+
+    </div>
+    <!-- /Inner Row Col-md-6 --> 
+  </div>
+  <!-- /Widgets Row End Grid--> 
+</div>
+<!-- / Content Wrapper --> 
+
+<script type="text/javascript" src="/js/vendors/flotchart/jquery.flot.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/flotchart/jquery.flot.resize.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/flotchart/jquery.flot.axislabels.js"></script> 
+<script type="text/javascript" src="/js/vendors/flotchart/jquery.flot-tooltip.js"></script> >
+<script src="/js/Chart.js"></script>
+
+<script>
+
+        if ($("#sns-chart").length) {
+
+            var facebook = [
+                [1, 4302],
+                [2, 3516],
+                [3, 4925],
+                [4, 3134],
+                [5, 4545],
+                [6, 5434],
+                [7, 5241],
+                [8, 6211],
+                [9, 5900],
+                [10, 6601],
+                [11, 4822],
+                [12, 4233]
+            ];
+            var twitter = [
+                [1, 1802],
+                [2, 2344],
+                [3, 1543],
+                [4, 2016],
+                [5, 1900],
+                [6, 3511],
+                [7, 4144],
+                [8, 4655],
+                [9, 3442],
+                [10, 3445],
+                [11, 3132],
+                [12, 2598]
+            ];
+
+            var youtube = [
+                [1, 1102],
+                [2, 2144],
+                [3, 1243],
+                [4, 2316],
+                [5, 1500],
+                [6, 2511],
+                [7, 4744],
+                [8, 4255],
+                [9, 1442],
+                [10, 2445],
+                [11, 2932],
+                [12, 1598]
+            ];
+
+
+            var naver = [
+                [1, 102],
+                [2, 244],
+                [3, 143],
+                [4, 216],
+                [5, 100],
+                [6, 211],
+                [7, 444],
+                [8, 455],
+                [9, 142],
+                [10, 245],
+                [11, 232],
+                [12, 198]
+            ];
+
+            var daumkakao = [
+                [1, 3302],
+                [2, 2516],
+                [3, 3925],
+                [4, 3134],
+                [5, 3545],
+                [6, 4434],
+                [7, 3241],
+                [8, 5211],
+                [9, 4900],
+                [10, 4601],
+                [11, 2822],
+                [12, 1233]
+            ];
+
+            var everyshot = [
+                [1, 2202],
+                [2, 2716],
+                [3, 3325],
+                [4, 2834],
+                [5, 2945],
+                [6, 1434],
+                [7, 3541],
+                [8, 1211],
+                [9, 4920],
+                [10, 3601],
+                [11, 1822],
+                [12, 4233]
+            ];
+
+
+            $.plot($("#sns-chart"), [{
+                    data: facebook,
+                    label: "Facebook"
+                }, {
+                    data: twitter,
+                    label: "Twitter"
+                }, {
+                    data: youtube,
+                    label: "Youtube"
+                },
+
+                {
+                    data: naver,
+                    label: "Naver"
+                },
+
+                {
+                    data: daumkakao,
+                    label: "daumkakao"
+                },
+
+                {
+                    data: everyshot,
+                    label: "Everyshot"
+                },
+
+
+
+
+            ], {
+                series: {
+                    lines: {
+                        show: true,
+                        lineWidth: 7,
+                        fill: true,
+                        fillColor: "rgba(255,255,255, 0.2)"
+                    },
+
+                    points: {
+                        show: true,
+                        fillColor: "#fff",
+                        lineWidth: 3,
+                        radius: 5
+                    },
+                    shadowSize: 0,
+                    stack: true
+                },
+
+
+                tooltip: true,
+                tooltipOpts: {
+                    content: "%y Refs"
+                },
+
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+
+                    borderWidth: 0
+                },
+
+                legend: {
+                    noColumns: 3,
+                    margin: -10,
+                    color: '#555',
+                    backgroundColor: '#fff',
+                    backgroundOpacity: 1,
+                    position: "nw"
+                },
+
+
+                colors: ["#47639e", "#55acee", "#cb2027", "#23b300", "#fff000", "#597da3"],
+                xaxis: {
+                    color: "rgba(0,0,0,.1)",
+                    ticks: [
+                        [1, "12시"],
+                        [2, "1시"],
+                        [3, "2시"],
+                        [4, "3시"],
+                        [5, "4시"],
+                        [6, "5시"],
+                        [7, "6시"],
+                        [8, "7시"],
+                        [9, "8시"],
+                        [10, "9시"],
+                        [11, "10시"],
+                        [12, "11시"]
+                    ],
+                    font: {
+                        color: "#8b8f94",
+                        size: 11,
+                        family: "Open Sans, sans-serif",
+                    }
+                },
+                yaxis: {
+                    color: "rgba(255,255,255,0.4)",
+                    ticks: 5,
+                    show: false,
+                    tickDecimals: 0,
+                    font: {
+                        color: "#fff",
+                        size: 11,
+                    }
+                }
+            });
+        }
+</script>
+<%#
+  <script>
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var lineChartData = {
+      labels : ["January","February","March","April","May","June","July"],
+      datasets : [
+        {
+          label: "My First dataset",
+          fillColor : "rgba(220,220,220,0.2)",
+          strokeColor : "rgba(220,220,220,1)",
+          pointColor : "rgba(220,220,220,1)",
+          pointStrokeColor : "#fff",
+          pointHighlightFill : "#fff",
+          pointHighlightStroke : "rgba(220,220,220,1)",
+          data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        },
+        {
+          label: "My Second dataset",
+          fillColor : "rgba(151,187,205,0.2)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          pointHighlightFill : "#fff",
+          pointHighlightStroke : "rgba(151,187,205,1)",
+          data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+        }
+      ]
+
+    }
+
+  window.onload = function(){
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myLine = new Chart(ctx).Line(lineChartData, {
+      responsive: true
+    });
+  }
+
+</script>
+%>
