@@ -1,0 +1,78 @@
+  <!--Horisontal Dropdown-->
+    
+    <!-- Widget Row Start grid -->
+    <div class="row" id="powerwidgets">
+      <div class="col-md-12 bootstrap-grid"> 
+        
+        <!-- New widget -->
+          <header>
+            <h2>새로 올라온 트윗<small>(참여 영상이 아니면 삭제버튼을 누르세요)</small></h2>
+          </header>
+          <div class="inner-spacer">
+            <div class="forum">
+              <div class="header">트위터의 영상들</div>
+              <ul>
+
+                <%@tweets.each do |tweet|%>
+
+                  <%clips = Clip.where(:source_id => tweet[0].to_s)%>
+                  <form action="/manages/tweet_upload" method="post">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                    <input type="hidden" name="source_id" value="<%=tweet[0].to_i%>">
+
+                      <li>
+                      <div class="col-lg-8 col-md-6 col-sm-8">
+                        <div class="main-details">                          <span class="description"><%=tweet[1]%></span><a href="/manages/delete_tweet/<%=tweet[0]%>" class="btn btn-danger btn-xs">삭제하기</a> </div>
+                      </div>
+                      <div class="col-lg-2 col-md-3 visible-lg visible-md">
+                        <div class="nums-container">
+
+                          <select name="celeb_id" id="celeb_<%=tweet[0]%>" class="celeb_select" data-tweet="<%=tweet[0]%>">
+                            <%Celeb.all.each do |celeb|%>
+                              <option value="<%=celeb.id%>" <%if tweet[1].to_s.include?(celeb.hashtag)%>selected<%end%> >
+                                <%=celeb.name%>
+                              </option>
+                            <%end%>
+                          </select>
+
+                          <select name="video">
+                            <%Celeb.all.each do |celeb|%>
+                              <%celeb.videos.each do |video|%>
+                                <option value="<%=video.id%>" class="video_option_<%=tweet[0]%> celeb_<%=tweet[0]%>_<%=celeb.id%>" <%if tweet[1].to_s.include?(celeb.hashtag) %><%if tweet[1].to_s[0..10].include?((celeb.videos.count + 1).to_s)%> selected<%end%><%else%>style="display:none;"<%end%>>
+                                  <%=video.title%>
+                                </option>
+                              <%end%>
+                            <%end%>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs"><span class="last-post"><%if clips.count == 0%><input type="submit" class="btn btn-primary" value="참여영상입니다"> <%else%>이미 참여 목록에 있습니다.<a href="/analytics/manage/<%=clips.first.video_id%>" class="btn btn-warning">영상 조회수 관리하기</a><%end%></span></div>
+                      <div class="clearfix"></div>
+                    </li>
+                  </form>
+                <%end%>
+              </ul>
+            </div>
+          </div>
+    
+        <!--/Forum Block--> 
+        
+      </div>
+    </div>
+    <!-- End Widget --> 
+    
+  </div>
+  <!-- /Inner Row Col-md-12 --> 
+</div>
+<!-- /Widgets Row End Grid--> 
+
+<script>
+  $(".celeb_select").change(function(){
+    var tweet = $(this).data("tweet");
+    var celeb = $("#celeb_" + tweet).val();
+
+    $(".video_option_" + tweet).hide();
+    $(".celeb_" + tweet + "_" + celeb).show();
+
+  });
+</script>
