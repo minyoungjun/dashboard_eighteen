@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(version: 20150727151723) do
     t.integer  "video_id"
     t.string   "source_id"
     t.integer  "view",       default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "not_video",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "fbtokens", force: :cascade do |t|

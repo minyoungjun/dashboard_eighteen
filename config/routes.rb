@@ -9,11 +9,19 @@ Rails.application.routes.draw do
 
   get 'manages/list'
   post 'manages/fb_upload'
+  post 'manages/fb_change'
 
   get 'manages/video/:id' => "manages#video"
 
+  get 'manages/twitter'
+  get 'manages/delete_tweet/:id' => 'manages#delete_tweet'
+
+  post 'manages/tweet_upload'
+
+
   get 'analytics/video/:id' => "analytics#video"
   get 'analytics/index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
