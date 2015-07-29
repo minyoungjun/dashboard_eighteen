@@ -199,13 +199,11 @@
             <%if @celeb != nil%>
             <div class="tab-pane active" id="userbar-one">
               <div class="main-info">
-                <div class="user-img"><img src="/images/emblem/엑소목소리.svg" alt="User Picture" /></div>
+                <div class="user-img"><img src="/images/emblem/<%=@celeb.hashtag%>.svg" alt="User Picture" style="border-radius:0;" /></div>
                 <h1><%=@celeb.name%> <small>#<%=@celeb.hashtag%></small></h1>
               </div>
-              <div class="list-group"> <a href="#" class="list-group-item"><i class="fa fa-user"></i>Profile</a> <a href="#" class="list-group-item"><i class="fa fa-cog"></i>Settings</a> <a href="#" class="list-group-item"><i class="fa fa-flask"></i>Projects<span class="badge">2</span></a>
-                <div class="empthy"></div>
-                <a href="#" class="list-group-item"><i class="fa fa-refresh"></i>Updates<span class="badge">5</span></a> <a href="#" class="list-group-item"><i class="fa fa-comment"></i>Messages<span class="badge">12</span></a> <a href="#" class="list-group-item"><i class="fa fa-comments"></i> Comments<span class="badge">45</span></a>
-                <div class="empthy"></div>
+              <div class="list-group"> <a href="#" class="list-group-item"><i class="fa fa-user"></i>프로필</a>
+                <a href="#" class="list-group-item"><i class="fa fa-eye"></i>조회수<span class="badge"><%=@celeb.view%></span></a> <a href="#" class="list-group-item"><i class="fa fa-comments"></i> 업로드 영상 목록<span class="badge"><%=@celeb.videos.count%>개</span></a>
                 <a href="#" data-toggle="modal" class="list-group-item lockme"><i class="fa fa-lock"></i> Lock</a> <a data-toggle="modal" href="#" class="list-group-item goaway"><i class="fa fa-power-off"></i> Sign Out</a> </div>
             </div>
           <%end%>

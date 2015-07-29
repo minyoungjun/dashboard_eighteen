@@ -1,6 +1,36 @@
+require "open-uri"
+
 class Video < ActiveRecord::Base
+  has_attached_file :thumbnail
+  validates_attachment_content_type :thumbnail, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_many :clips
   belongs_to  :celeb
+
+  def source(id)
+
+    clips = self.clips.where(:source => id)
+    
+    if clips.count == 0
+      result = Clip.new
+      result.source = id
+      result.video_id = self.id
+      result.save
+    else
+      result = clips.first
+    end
+
+    return result
+
+  end
+
+  def youtube
+
+
+  end
+
+  def thumbnail_from_url(url)
+    self.thumbnail = URI.parse(url)
+  end
 
   def facebook_clip
 

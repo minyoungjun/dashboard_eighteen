@@ -24,26 +24,29 @@
         <h2><%=@video.title%><small>보러가기</small></h2>
       </header>
       <div class="inner-spacer nopadding">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%),url('<%=@video.thumbnail.url(:original)%>');background-position: center top;background-size: 100% auto;">
           <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <%#
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>%>
           </ol>
           <div class="carousel-inner">
-            <div class="item active"style="background:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%),url('/images/exo.jpg');background-position: center top;background-size: 100% auto;">
+            <div class="item active">
                 <div class="portlet-profile thumbnail-img">
                   <a href="https://facebook.com/<%=@video.facebook_clip.source_id%>" style="color:white;"><div class="user-img " style="font-size:5em;"><i class="fa fa-facebook" ></i></div></a>
                   <h1>Facebook</h1>
                   View: <%=@facebook["count"]%> | like: <%=@facebook["like"]%>
                 </div>
-             </div>
-             <div class="item "style="background-image:linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 100%),url('/images/exo.jpg');background-position: center top;background-size: 100% auto;">
+              </div>
+              <%#>
+             <div class="item ">
                 <div class="portlet-profile thumbnail-img">
                   <div class="user-img " style="font-size:5em;"><i class="fa fa-youtube"></i></div>
                   <h1>Youtube</h1>
                   Followers: 451 | Friends: 45
                 </div>
-             </div>
+              </div>
+            %>
           </div>
           <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
       </div>
@@ -53,14 +56,10 @@
           
   <div class="col-md-6 bootstrap-grid"> 
     <div class="powerwidget powerwidget-as-portlet-white" id="social" data-widget-editbutton="false">
-      <header>
-        <h2><%=@video.title%><small>on SNS</small></h2>
-      </header>
       <div class="inner-spacer">
         <div class="flotchart-container">
           <div id="sns-chart" class="flotchart-placeholder"></div>
         </div>
-        
       </div>
     </div> 
   </div>
@@ -351,7 +350,7 @@
                 },
 
 
-                colors: ["#47639e", "#55acee", "#cb2027", "#23b300", "#fff000", "#597da3"],
+                colors: ["#47639e", "#55acee", "#cb2027", "#23b300", "#fff000", "#F06A93;"],
                 xaxis: {
                     color: "rgba(0,0,0,.1)",
                     ticks: [

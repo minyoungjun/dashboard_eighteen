@@ -20,19 +20,11 @@ ActiveRecord::Schema.define(version: 20150727151723) do
 
   create_table "celebs", force: :cascade do |t|
     t.string   "name"
-    t.string   "face_file_name"
-    t.string   "face_content_type"
-    t.integer  "face_file_size"
-    t.datetime "face_updated_at"
-    t.string   "emblem_file_name"
-    t.string   "emblem_content_type"
-    t.integer  "emblem_file_size"
-    t.datetime "emblem_updated_at"
     t.string   "hashtag"
     t.string   "playlist"
-    t.integer  "view",                default: 0
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "view",       default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "clips", force: :cascade do |t|
@@ -44,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150727151723) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "clips", ["source_id"], name: "index_clips_on_source_id", unique: true
 
   create_table "fbtokens", force: :cascade do |t|
     t.string   "token"
@@ -68,13 +62,16 @@ ActiveRecord::Schema.define(version: 20150727151723) do
   end
 
   create_table "videos", force: :cascade do |t|
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
     t.integer  "celeb_id"
     t.string   "title"
     t.text     "description"
-    t.string   "thumbnail"
-    t.integer  "view",        default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "view",                   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "watches", force: :cascade do |t|

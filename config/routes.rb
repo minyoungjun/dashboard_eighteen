@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #
 
-  root 'manages#list'
+
+  root 'analytics#index'
+
+  get 'manages/new' => 'manages#list'
 
   get 'manages/list'
   post 'manages/fb_upload'
@@ -14,7 +17,12 @@ Rails.application.routes.draw do
   get 'manages/video/:id' => "manages#video"
 
   get 'manages/twitter'
+  get 'manage/twitter_list'
   get 'manages/delete_tweet/:id' => 'manages#delete_tweet'
+
+  get 'manages/table'
+
+  post 'manages/update'
 
   post 'manages/tweet_upload'
 

@@ -14,7 +14,7 @@ token.token = "CAAIINCifRTEBAA1LkOvI9R9MVjLwIgNRZApNVslaHDQ4QnuZAD4xXBedzAk39SBC
 token.page_id = "100508786966555"
 token.save
 
-[["월급도둑","동네오빠","PLN655gxqfVS-qtyPo74YrBNO5jqTRw2PJ"], ["영국남자","영국남자","PLN655gxqfVS8YO4Z2SU9P0OQgAjucIG3d"], ["건강소유","소유","PLN655gxqfVS8tREtNKrFcrQCFjibgEgTU"], ["표설록","표창원","PLN655gxqfVS9rHN56K9ZGP3i65z61ImEo"],["파리갓나영", "김나영","PLN655gxqfVS9onoA8AUToxBayvkUJPH3w"], ["바보가면","김종민","PLN655gxqfVS9DcX8crWJ9jC8MOF4ocEPa"], ["아티스트봉","봉만대","PLN655gxqfVS_4KhBwm-B6fakbHHLsAbQb"], ["엑소목소리","찬열","PLN655gxqfVS-PVtVAUD9Cp-VHi6hro2LR"]].each do |name|
+[["월급도둑","동네오빠","PLN655gxqfVS-qtyPo74YrBNO5jqTRw2PJ"], ["영국남자","영국남자","PLN655gxqfVS8YO4Z2SU9P0OQgAjucIG3d"], ["건강소유","소유","PLN655gxqfVS8tREtNKrFcrQCFjibgEgTU"], ["표셜록","표창원","PLN655gxqfVS9rHN56K9ZGP3i65z61ImEo"],["파리갓나영", "김나영","PLN655gxqfVS9onoA8AUToxBayvkUJPH3w"], ["바보가면","김종민","PLN655gxqfVS9DcX8crWJ9jC8MOF4ocEPa"], ["아티스트봉","봉만대","PLN655gxqfVS_4KhBwm-B6fakbHHLsAbQb"], ["엑소목소리","찬열","PLN655gxqfVS-PVtVAUD9Cp-VHi6hro2LR"]].each do |name|
   celeb = Celeb.new
   celeb.hashtag = name[0]
   celeb.name = name[1]

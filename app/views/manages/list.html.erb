@@ -15,10 +15,11 @@
                 <%@doc.each do |fb|%>
 
                   <%clips = Clip.where(:source_id => fb["id"].to_s)%>
-                  <form action=<%if clip.count == 0%>"/manages/fb_upload"<%else%>"/manages/fb_change"<%end%> method="post">
+                  <form action=<%if clips.count == 0%>"/manages/fb_upload"<%else%>"/manages/fb_change"<%end%> method="post">
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                    <input type="hidden" name="picture" value="<%=fb["format"][0]["picture"]%>">
                     <input type="hidden" name="source_id" value="<%=fb["id"]%>">
-                    <%if clips.count != 0%><input type="hidden" name="clip" value="<%=clips.count%>"><%end%>
+                    <%if clips.count != 0%><input type="hidden" name="clip" value="<%=clips.first.id%>"><%end%>
                       <li>
                       <div class="col-lg-8 col-md-6 col-sm-8">
                         <div class="main-details"><a href="https://www.facebook.com/<%=fb["id"]%>"><img src="<%=fb["format"][0]["picture"]%>" style="width:40px;position:absolute; top:0; left:0;"/></a> </i>

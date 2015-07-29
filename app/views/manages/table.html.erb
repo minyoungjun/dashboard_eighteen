@@ -1,0 +1,93 @@
+<style>
+  td input {
+    width:100px;
+  }
+</style>
+
+  <div class="breadcrumb clearfix">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+      <li><a href="index.html">Dashboard</a></li>
+      <li class="active">전체 관리</li>
+    </ul>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="page-header">
+    <h1>모든 데이터 관리<small>여러사람이 동시에 사용하는 페이지이므로 숫자가 줄어들지 않습니다. 잘못 입력하여 숫자가 커진 경우 0을 저장한 후에 다시 해주세요.</small></h1>
+  </div>
+  <form action="/manages/update" method = "post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  <input type="submit" style="left: 50%;margin:0 auto; position:fixed; bottom:20px; z-index:99999;" value="저장하기" class="btn btn-danger" >
+  
+  <!-- Widget Row Start grid -->
+  <div class="row" id="powerwidgets">
+    <div class="col-md-12 bootstrap-grid"> 
+      
+      <!-- New widget -->
+      <div class="powerwidget" id="datatable-filter-column" data-widget-editbutton="false">
+        <header>
+          <h2>Datatable<small>Columns Filtering</small></h2>
+        </header>
+        <div class="inner-spacer">
+          <table class="display table table-striped table-hover" id="table-2">
+            <thead>
+              <tr>
+                <th>순번</th>
+                <th>title</th>
+                <th>출연자</th>
+                <th>twitter</th>
+                <th>youtube</th>
+                <th>everyshot</th>
+                <th>Naver</th>
+                <th>Kakao</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@videos.each do |video|%>
+                <tr>
+                  <td><%=video.id%></td>
+                  <td><%=video.title%></td>
+                  <td><select name="celeb[<%=video.id%>]"><%Celeb.all.each do |celeb|%>
+                      <option value="<%=celeb.id%>" <%if video.celeb_id == celeb.id%>selected<%end%>><%=celeb.hashtag%></option>
+                  <%end%>
+                  </select>
+                  </td>
+
+                  <td style="background-color:#55acee"><input type="text" name="view[2][<%=video.id%>]" value="<%=video.source(2).view%>"></td>
+
+                  <td style="background-color:#cb2027"><input type="text" name="view[1][<%=video.id%>]" value="<%=video.source(1).view%>"></td>
+
+                  <td style="background-color:#F06a93"><input type="text" name="view[5][<%=video.id%>]" value="<%=video.source(5).view%>"></td>
+
+                  <td style="background-color:#23b300"><input name="view[3][<%=video.id%>]"type="text" value="<%=video.source(3).view%>"></td>
+                  <td style="background-color:#fff000"><input name="view[4][<%=video.id%>]" value="<%=video.source(4).view%>" type="text"></td>
+
+                </tr>
+              <%end%>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><input type="text" name="filter_game_name" placeholder="Filter Game Name" class="search_init" /></th>
+                <th><input type="text" name="filter_publisher" placeholder="Filter Publisher" class="search_init" /></th>
+                <th><input type="text" name="filter_platform" placeholder="Filter Platform" class="search_init" /></th>
+                <th><input type="text" name="filter_genre" placeholder="Filter Genre" class="search_init" /></th>
+                <th><input type="text" name="filter_sales" placeholder="Filter Sales" class="search_init" /></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- End .powerwidget --> 
+
+      
+    </div>
+    <!-- /Inner Row Col-md-12 --> 
+  </div>
+  <!-- /Widgets Row End Grid--> 
+    </form>
+
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables-bootstrap.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/dataTables.colVis.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/colvis.extras.js"></script> 
