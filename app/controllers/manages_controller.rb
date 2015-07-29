@@ -2,8 +2,70 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'twitter'
 
 class ManagesController < ApplicationController
+
+  def refresh_facebook
+
+  end
+
+  def refresh_twitter
+
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "675AzTJ3pgdFEI7oEmCQreyGc"
+      config.consumer_secret     = "BbB3SbRqDZp67IXLCawUUbCftDBXUjC46SwkCSpKLdujavS29b"
+      config.access_token        = "3259726897-elUXZk2yZCi9aWFwyELFxDuArpJzGsvaJzCdjS6"
+      config.access_token_secret = "Y6JsoQ3c5jckHpoccmYQOuYG1sSLX3hYapSzJfpwzqsWm"
+    end
+
+    Clip.where(:source => 2).each do |tweet|
+
+      if tweet.source_id != nil
+        tweet.retweet = client.status(tweet.source_id).retweet_count
+      else
+        tweet.retweet = 0
+      end
+      tweet.save
+
+    end
+    render :text => "success"
+
+  end
+
+  def timing
+    
+    params[:timing].each do |key, value|
+      timing = Timing.find(key)
+      timing.snap_id = value
+      timing.save
+    end
+
+    render :text => "success"
+
+  end
+
+  def login
+
+  end
+
+  def snaplist
+
+    @snapshots = Snap.all
+    @timings = Timing.all
+
+  end
+
+  def snapshot
+    
+    snap = Snap.new
+    snap.save
+    snap.view = snap.snapshot
+    snap.save
+
+    render :text => snap.view.to_s
+
+  end
 
   def table
     @videos = Video.all
@@ -69,7 +131,6 @@ class ManagesController < ApplicationController
   end
 
   def twitter
-    require 'twitter'
 
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "675AzTJ3pgdFEI7oEmCQreyGc"
@@ -89,10 +150,9 @@ class ManagesController < ApplicationController
 
   def tweet_upload
 
-    clip = Clip.new
-    clip.source = 2
+    video = Video.find(params[:video])
+    clip = video.source(2)
     clip.source_id = params[:source_id]
-    clip.video_id = params[:video]
     clip.save
 
     redirect_to :action => "video", :id => clip.video_id

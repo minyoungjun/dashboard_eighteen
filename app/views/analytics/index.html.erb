@@ -31,24 +31,22 @@
             <%Celeb.all.each do |celeb|%>
               <%order = order + 1%>
               <li class="col-md-3 col-sm-6">
-                <div class="thumbnail" <%if order == 1%>style="border: 5px solid #fff000;"<%end%>>
-                  <div class='hover-fader'><img class="img-rounded img-responsive" src="/images/18s_main_img/<%=celeb.hashtag%>.png" alt="image01"><span class='zoom'></span></div>
-                  <div class="gal-overlay" id="image-1"><img src="./images/gallery/1.png" alt="image01" />
-                    <div>
-                      <h3>Image Item</h3>
-                      <p>Here comes description of the Image Item</p>
-                      <a href="#image-10" class="gal-prev"><i class="fa fa-angle-left"></i></a> <a href="#image-2" class="gal-next"><i class="fa fa-angle-right"></i></a> </div>
-                    <a href="#die" class="gal-close"><i class="fa fa-times-circle"></i></a> </div>
-                  <div class="caption">
-                    <p class="big"><strong><%=celeb.name%></strong> | #<%=celeb.hashtag%> </p>
-                    <div class="big-icons-buttons">
-                        <div class="btn-group">
-                          <a class="btn btn-danger"><h4><%=order%>위</h4></a>
-                          <a class="btn btn-info"><h4><%=celeb.view%> View</h4></a>
+                <a href="/analytics/profile/<%=celeb.id%>">
+                  <div class="thumbnail" <%if order == 1%>style="border: 5px solid #fff000;"<%end%>>
+                    <div class='hover-fader'><img class="img-rounded img-responsive" src="/images/18s_main_img/<%=celeb.hashtag%>.png" alt="image01"><span class='zoom'></span></div>
+                    <div class="gal-overlay" id="image-1"><img src="./images/gallery/1.png" alt="image01" />
+                      <a href="#die" class="gal-close"><i class="fa fa-times-circle"></i></a> </div>
+                    <div class="caption">
+                      <p class="big"><strong><%=celeb.name%></strong> | #<%=celeb.hashtag%> </p>
+                      <div class="big-icons-buttons">
+                          <div class="btn-group">
+                            <a   href="/analytics/profile/<%=celeb.id%>"class="btn btn-danger"><h4><%=order%>위</h4></a>
+                            <a  href="/analytics/profile/<%=celeb.id%>" class="btn btn-info"><h4><%=celeb.view%> View</h4></a>
+                          </div>
                         </div>
-                      </div>
+                    </div>
                   </div>
-                </div>
+                </a>
               </li>
             <%end%>
             

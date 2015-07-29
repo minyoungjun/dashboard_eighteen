@@ -4,7 +4,24 @@ class Video < ActiveRecord::Base
   has_attached_file :thumbnail
   validates_attachment_content_type :thumbnail, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_many :clips
+  has_many  :snapvideos
   belongs_to  :celeb
+
+  def snapshot(id)
+    total = 0
+    self.clips.each do |clip|
+      total = total + clip.snapshot(id)
+    end
+    snapvideo = Snapvideo.new
+    snapvideo.view = total
+    snapvideo.video_id = self.id
+    snapvideo.snap_id = id
+    snapvideo.save
+    self.view = total
+    self.save
+    return total
+
+  end
 
   def source(id)
 

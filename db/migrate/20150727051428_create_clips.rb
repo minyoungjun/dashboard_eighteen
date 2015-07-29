@@ -6,6 +6,9 @@ class CreateClips < ActiveRecord::Migration
       t.string  :source_id
       t.integer :view, default: 0
       t.boolean :not_video, default: false
+      t.integer :like, default: 0
+      t.integer :comment, default: 0
+      t.integer :retweet, default: 0
 
       t.timestamps null: false
     end

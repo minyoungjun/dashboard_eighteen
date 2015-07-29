@@ -1,0 +1,64 @@
+
+  <div class="breadcrumb clearfix">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+      <li><a href="index.html">Dashboard</a></li>
+      <li class="active">snap관리</li>
+    </ul>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="page-header">
+    <h1>snap과 timing을 관리</h1>
+  </div>
+  <form action="/manages/timing" method = "post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  <input type="submit" style="left: 50%;margin:0 auto; position:fixed; bottom:20px; z-index:99999;" value="저장하기" class="btn btn-danger" >
+  
+  <!-- Widget Row Start grid -->
+  <div class="row" id="powerwidgets">
+    <div class="col-md-12 bootstrap-grid"> 
+      
+      <!-- New widget -->
+      <div class="powerwidget" id="datatable-filter-column" data-widget-editbutton="false">
+        <header>
+          <h2>Datatable<small>Columns Filtering</small></h2>
+        </header>
+        <div class="inner-spacer">
+          <table class="display table table-striped table-hover" id="table-2">
+            <thead>
+              <tr>
+                <th>스냅샷</th>
+                <%@timings.each do |timing|%>
+                  <th><%=timing.name%></th>
+                <%end%>
+              </tr>
+            </thead>
+            <tbody>
+              <%@snapshots.each do |snapshot|%>
+                <tr>
+                  <td>
+                    <%=snapshot.created_at.to_s[11..18]%>
+                  </td>
+                  <%@timings.each do |timing|%>
+                    <td><input type="radio" name="timing[<%=timing.id%>]" value="<%=snapshot.id%>"></td>
+                  <%end%>
+                </tr>
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- End .powerwidget --> 
+
+      
+    </div>
+    <!-- /Inner Row Col-md-12 --> 
+  </div>
+  <!-- /Widgets Row End Grid--> 
+    </form>
+
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables-bootstrap.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/dataTables.colVis.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/colvis.extras.js"></script> 

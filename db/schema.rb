@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727151723) do
+ActiveRecord::Schema.define(version: 20150729200321) do
 
   create_table "analytics", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20150727151723) do
     t.string   "source_id"
     t.integer  "view",       default: 0
     t.boolean  "not_video",  default: false
+    t.integer  "like",       default: 0
+    t.integer  "comment",    default: 0
+    t.integer  "retweet",    default: 0
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -51,7 +54,39 @@ ActiveRecord::Schema.define(version: 20150727151723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "snapcelebs", force: :cascade do |t|
+    t.integer  "snap_id"
+    t.integer  "celeb_id"
+    t.integer  "view"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "snapclips", force: :cascade do |t|
+    t.integer  "snap_id"
+    t.integer  "clip_id"
+    t.integer  "view"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "snaps", force: :cascade do |t|
+    t.integer  "view"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "snapvideos", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "snap_id"
+    t.integer  "view"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "timings", force: :cascade do |t|
+    t.integer  "snap_id"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

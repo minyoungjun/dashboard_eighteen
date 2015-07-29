@@ -29,6 +29,14 @@ Rails.application.routes.draw do
 
   get 'analytics/video/:id' => "analytics#video"
   get 'analytics/index'
+  get 'analytics/profile/:id' => "analytics#profile"
+
+  get 'manages/snapshot'
+  get 'manages/snaplist'
+
+  post 'manages/timing'
+  get 'manages/refresh_twitter'
+  get 'manages/refresh_facebook'
 
 
   # Example of regular route:

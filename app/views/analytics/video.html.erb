@@ -95,8 +95,8 @@
           <div class="inner-spacer nopadding" style="background-color:#00aced;">
             <div class="portlet-big-icon"><i class="fa fa-twitter"></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-6 col-sm-6 col-xs-6"><strong>232</strong><small>view</small></li>
-              <li class="col-md-6 col-sm-6 col-xs-6"><strong>232</strong><small>Retweet</small></li>
+              <li class="col-md-6 col-sm-6 col-xs-6"><strong><%=@video.source(2).view%></strong><small>view</small></li>
+              <li class="col-md-6 col-sm-6 col-xs-6"><strong>0</strong><small>Retweet</small></li>
             </ul>
           </div>
         </div>
@@ -113,7 +113,7 @@
           <div class="inner-spacer nopadding"style="background-color:#bb0000;">
             <div class="portlet-big-icon"><i class="fa fa-youtube"></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-12 col-sm-12 col-xs-12"><strong>2791</strong><small>view</small></li>
+              <li class="col-md-12 col-sm-12 col-xs-12"><strong><%=@video.source(1).view%></strong><small>view</small></li>
             </ul>
           </div>
         </div>
@@ -131,7 +131,7 @@
           <div class="inner-spacer nopadding" style="background-color:#F06A93; color:white;">
             <div class="portlet-big-icon" style="padding-top:5px;padding-bottom:10px;"><i><img src="/images/everyshot.svg" style="height:50px;"/></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong>211</strong><small>view</small></li>
+              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong><%=@video.source(5).view%></strong><small>view</small></li>
               <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong>211</strong><small><i class="fa fa-heart"></i> 좋아요</small></li>
             </ul>
           </div>
@@ -148,7 +148,7 @@
           <div class="inner-spacer nopadding" style="background-color:#23b300;">
             <div class="portlet-big-icon" style="padding-top:15px;padding-bottom:20px;"><i><img src="/images/naver_logo.png" style="height:30px;"/></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-12 col-sm-12 col-xs-12"><strong>1000</strong><small>view</small></li>
+              <li class="col-md-12 col-sm-12 col-xs-12"><strong><%=@video.source(3).view%></strong><small>view</small></li>
             </ul>
           </div>
         </div>
@@ -163,7 +163,7 @@
           <div class="inner-spacer nopadding" style="background-color:#fff000;">
             <div class="portlet-big-icon" style="padding-top:15px;padding-bottom:20px;"><i><img src="/images/daumkakao.png" /></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-12 col-sm-12 col-xs-12" style="background:none;"><strong>211</strong><small>view</small></li>
+              <li class="col-md-12 col-sm-12 col-xs-12" style="background:none;"><strong><%=@video.source(4).view%></strong><small>view</small></li>
             </ul>
           </div>
         </div>
@@ -186,97 +186,22 @@
 
 <script>
 
-        if ($("#sns-chart").length) {
+  if ($("#sns-chart").length) {
+    
 
-            var facebook = [
-                [1, 4302],
-                [2, 3516],
-                [3, 4925],
-                [4, 3134],
-                [5, 4545],
-                [6, 5434],
-                [7, 5241],
-                [8, 6211],
-                [9, 5900],
-                [10, 6601],
-                [11, 4822],
-                [12, 4233]
-            ];
-            var twitter = [
-                [1, 1802],
-                [2, 2344],
-                [3, 1543],
-                [4, 2016],
-                [5, 1900],
-                [6, 3511],
-                [7, 4144],
-                [8, 4655],
-                [9, 3442],
-                [10, 3445],
-                [11, 3132],
-                [12, 2598]
-            ];
+    <%@video.clips.each do |clip|%>
+      <%all_array = Array.new%>
+      <%count = 0%>
+      <%Timing.all.each do |timing|%>
+        <% snapclips = timing.snap.snapclips.where(:clip_id => clip.id)%>
+        <%if snapclips.count != 0%>
+          <%all_array << [count, snapclips.first.view]%>
+          <%count = count + 1%>
+        <%end%>
+      <%end%>
+      var <%=@sources[clip.source]%> = <%=all_array.to_s%>;
 
-            var youtube = [
-                [1, 1102],
-                [2, 2144],
-                [3, 1243],
-                [4, 2316],
-                [5, 1500],
-                [6, 2511],
-                [7, 4744],
-                [8, 4255],
-                [9, 1442],
-                [10, 2445],
-                [11, 2932],
-                [12, 1598]
-            ];
-
-
-            var naver = [
-                [1, 102],
-                [2, 244],
-                [3, 143],
-                [4, 216],
-                [5, 100],
-                [6, 211],
-                [7, 444],
-                [8, 455],
-                [9, 142],
-                [10, 245],
-                [11, 232],
-                [12, 198]
-            ];
-
-            var daumkakao = [
-                [1, 3302],
-                [2, 2516],
-                [3, 3925],
-                [4, 3134],
-                [5, 3545],
-                [6, 4434],
-                [7, 3241],
-                [8, 5211],
-                [9, 4900],
-                [10, 4601],
-                [11, 2822],
-                [12, 1233]
-            ];
-
-            var everyshot = [
-                [1, 2202],
-                [2, 2716],
-                [3, 3325],
-                [4, 2834],
-                [5, 2945],
-                [6, 1434],
-                [7, 3541],
-                [8, 1211],
-                [9, 4920],
-                [10, 3601],
-                [11, 1822],
-                [12, 4233]
-            ];
+      <%end%>
 
 
             $.plot($("#sns-chart"), [{

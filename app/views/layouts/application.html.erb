@@ -191,7 +191,7 @@
             <%if @celeb != nil%>
               <li class="active"><a href="#userbar-one" data-toggle="tab"><%=@celeb.name%></a></li>
             <%end%>
-            <li <%if @celeb == nil%>class="active"<%end%>><a href="#userbar-two" data-toggle="tab">출연진 목록</a></li>
+            <li <%if @celeb == nil%>class="active"<%end%>><a href="#userbar-two" data-toggle="tab">출연자 목록</a></li>
           </ul>
           <div class="tab-content"> 
             
@@ -204,7 +204,7 @@
               </div>
               <div class="list-group"> <a href="#" class="list-group-item"><i class="fa fa-user"></i>프로필</a>
                 <a href="#" class="list-group-item"><i class="fa fa-eye"></i>조회수<span class="badge"><%=@celeb.view%></span></a> <a href="#" class="list-group-item"><i class="fa fa-comments"></i> 업로드 영상 목록<span class="badge"><%=@celeb.videos.count%>개</span></a>
-                <a href="#" data-toggle="modal" class="list-group-item lockme"><i class="fa fa-lock"></i> Lock</a> <a data-toggle="modal" href="#" class="list-group-item goaway"><i class="fa fa-power-off"></i> Sign Out</a> </div>
+               </div>
             </div>
           <%end%>
             
@@ -217,7 +217,7 @@
                     <ul>
                       <%rank = 1%>
                       <%Celeb.all.each do |celeb|%>
-                        <li><a href="#"><span class="chat-name">#<%=celeb.hashtag%></span><span class="user-img"><img style="border-radius:0;box-shadow:none;height:40px;" src="/images/emblem/<%=celeb.hashtag%>.svg" alt="<%=celeb.name%>"/></span><span class="label label-success"><%=celeb.view%> view</span><span class="badge"><%=rank%>위</span></a></li>
+                        <li><a href="/analytics/profile/<%=celeb.id%>"><span class="chat-name">#<%=celeb.hashtag%></span><span class="user-img"><img style="border-radius:0;box-shadow:none;height:40px;" src="/images/emblem/<%=celeb.hashtag%>.svg" alt="<%=celeb.name%>"/></span><span class="label label-success"><%=celeb.view%> view</span><span class="badge"><%=rank%>위</span></a></li>
                         <%rank = rank + 1%>
                       <%end%>
                     </ul>

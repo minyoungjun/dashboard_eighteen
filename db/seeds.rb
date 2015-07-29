@@ -8,6 +8,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
+1.upto(12) do |clock|
+  timing = Timing.new
+  timing.name = "#{clock}시"
+  timing.save
+end
 
 token = Fbtoken.new
 token.token = "CAAIINCifRTEBAA1LkOvI9R9MVjLwIgNRZApNVslaHDQ4QnuZAD4xXBedzAk39SBC4ypWdKWNwQyKyJN5Fbuv04WahyENO38dnrnhsYqi3gQHlwHa8PMXMCvg6ReVDzLYE4p9EMv5joZAUDM8EdiTjrcleRHApQDiCMqaDAZBlZCiWXFGV4o7MdfxMZANpSz8AqJzGImIpoHv6ZAqfduGc3A"
@@ -20,5 +25,7 @@ token.save
   celeb.name = name[1]
   celeb.playlist = name[2]
   celeb.save
+  
+
 end
 
