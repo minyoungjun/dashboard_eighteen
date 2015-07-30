@@ -4,7 +4,20 @@ class Celeb < ActiveRecord::Base
   has_many  :videos
   has_many  :snapcelebs
 
+
   def view_timing(id)
+
+    timing = Timing.find(params[:id])
+    snapcelebs = timing.snap.snapcelebs.where(:celeb_id => self.id)
+
+    
+    if snapcelebs.count != 0 
+      result = snapcelebs.first.view
+    else
+      result = 0
+    end
+
+    return result
 
   end
 

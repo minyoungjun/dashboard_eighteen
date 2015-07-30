@@ -2,6 +2,9 @@
 <!-- Widget Row Start grid -->
 <div class="row" id="powerwidgets">
   <div class="col-md-12 bootstrap-grid"> 
+    <div class="powerwidget col-md-12" >
+
+    </div>
     
     <!-- New widget -->
     <div class="powerwidget cold-grey" id="profile" data-widget-editbutton="false">
@@ -49,8 +52,8 @@
                       <!--Tiny User Block-->
                       <%@celeb.videos.each do |video|%>
                         <li>
-                          <div class="items-inner clearfix">
-                            <a class="items-image" style="max-width:130px;" href="/analytics/video/<%=video.id%>"><img class="img-circle" src="<%=video.thumbnail.url(:original)%>" style="border-radius:0;"></a>
+                          <div class="items-inner clearfix" onclick="location.href='/analytics/video/<%=video.id%>';">
+                            <a class="items-image" style="max-width:130px;" ><img class="img-circle" src="<%=video.thumbnail.url(:original)%>" style="border-radius:0;"></a>
                           <h3 class="items-title"><%=video.title%></h3>
                           <div class="items-details"><strong><%=video.view%></strong> view</div>
                           <a href="/analytics/video/<%=video.id%>" class="btn btn-success btn-sm">통계보기</a>
