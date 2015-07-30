@@ -37,11 +37,12 @@
                     <div class="gal-overlay" id="image-1"><img src="./images/gallery/1.png" alt="image01" />
                       <a href="#die" class="gal-close"><i class="fa fa-times-circle"></i></a> </div>
                     <div class="caption">
-                      <p class="big"><strong><%=celeb.name%></strong> | #<%=celeb.hashtag%> </p>
+                      <p class="big"><strong><%=celeb.name%></strong> | #<%=celeb.hashtag%> <span class="badge"><strong><%=celeb.videos.count%>개</strong></span></p>
                       <div class="big-icons-buttons">
                           <div class="btn-group">
                             <a   href="/analytics/profile/<%=celeb.id%>"class="btn btn-danger"><h4><%=order%>위</h4></a>
                             <a  href="/analytics/profile/<%=celeb.id%>" class="btn btn-info"><h4><%=celeb.view%> View</h4></a>
+
                           </div>
                         </div>
                     </div>

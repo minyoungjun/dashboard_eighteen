@@ -35,7 +35,6 @@
             <div class="tabs-white">
               <ul id="myTab" class="nav nav-tabs nav-justified">
                 <li class="active"><a href="#followers" data-toggle="tab">영상 분석</a></li>
-                <li><a href="#home" data-toggle="tab">능력치</a></li>
               </ul>
 
               <div id="myTabContent" class="tab-content">
@@ -56,6 +55,7 @@
                             <a class="items-image" style="max-width:130px;" ><img class="img-circle" src="<%=video.thumbnail.url(:original)%>" style="border-radius:0;"></a>
                           <h3 class="items-title"><%=video.title%></h3>
                           <div class="items-details"><strong><%=video.view%></strong> view</div>
+                          <div class="items-details"><%=video.created_at.hour + 9%>시 <%=video.created_at.min%>분</div>
                           <a href="/analytics/video/<%=video.id%>" class="btn btn-success btn-sm">통계보기</a>
                       </div></li>
                       <%end%>
@@ -63,9 +63,6 @@
                   </div>
                 </div>
 
-                <div class="tab-pane " id="home">
-                  
-                </div>
 
               
               <!--/Chat Tab-->

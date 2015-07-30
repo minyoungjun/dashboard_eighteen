@@ -202,8 +202,7 @@
                 <div class="user-img"><img src="/images/emblem/<%=@celeb.hashtag%>.svg" alt="User Picture" style="border-radius:0;" /></div>
                 <h1><%=@celeb.name%> <small>#<%=@celeb.hashtag%></small></h1>
               </div>
-              <div class="list-group"> <a href="#" class="list-group-item"><i class="fa fa-user"></i>프로필</a>
-                <a href="#" class="list-group-item"><i class="fa fa-eye"></i>조회수<span class="badge"><%=@celeb.view%></span></a> <a href="#" class="list-group-item"><i class="fa fa-comments"></i> 업로드 영상 목록<span class="badge"><%=@celeb.videos.count%>개</span></a>
+              <div class="list-group">                 <a href="#" class="list-group-item"><i class="fa fa-eye"></i>조회수<span class="badge"><%=@celeb.view%></span></a> <a href="/analytics/profile/<%=celeb.id%>" class="list-group-item"><i class="fa fa-comments"></i> 업로드 영상 목록<span class="badge"><%=@celeb.videos.count%>개</span></a>
                </div>
             </div>
           <%end%>
