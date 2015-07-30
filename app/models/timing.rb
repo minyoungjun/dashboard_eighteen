@@ -2,10 +2,8 @@ class Timing < ActiveRecord::Base
 
   def snap
     
-    snaps = Snap.where(:timing_id => self.id)
-
-    if snaps.count != 0
-      result = snaps.first  
+    if self.snap_id != nil
+      result = Snap.find(self.snap_id) 
     else
       result = Snap.first
     end
