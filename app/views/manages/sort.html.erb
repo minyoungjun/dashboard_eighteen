@@ -31,6 +31,7 @@
             <thead>
               <tr>
                 <th>순번</th>
+                <th>올린시간</th>
                 <th>title</th>
                 <th>출연자</th>
                 <th>Facebook</th>
@@ -46,17 +47,16 @@
               <%Video.all.each do |video|%>
                 <tr>
                   <td><%=video.id%></td>
+                  <td><%=(video.created_at + 9.hour).to_s[10..15]%></td>
                   <td><%=video.title%></td>
                   <td><%=video.celeb.name%></td>
-                  <td ><%=a = video.source(0).view%></td>
-                  <td ><%=b = video.source(2).view%></td>
-
+                  <td><%=a = video.source(0).view%></td>
+                  <td><%=b = video.source(2).view%></td>
                   <td><%=c = video.source(1).view%></td>
                   <td><%=d = video.source(5).view%></td>
                   <td><%=e = video.source(3).view%></td>
                   <td><%=f = video.source(4).view%></td>
                   <td><%=a + b + c + d + e + f%></td>
-
                 </tr>
               <%end%>
             </tbody>
