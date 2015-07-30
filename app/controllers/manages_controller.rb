@@ -61,6 +61,8 @@ class ManagesController < ApplicationController
 
   def snapshot
     
+    Video.refresh_facebook
+
     snap = Snap.new
     snap.save
     snap.view = snap.snapshot
