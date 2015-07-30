@@ -49,10 +49,7 @@
                 <tr>
                   <td><%=video.id%></td>
                   <td><%=video.title%></td>
-                  <td><select name="celeb[<%=video.id%>]"><%Celeb.all.each do |celeb|%>
-                      <option value="<%=celeb.id%>" <%if video.celeb_id == celeb.id%>selected<%end%>><%=celeb.hashtag%></option>
-                  <%end%>
-                  </select>
+                  <td><%=celeb.hashtag%>
                   </td>
 
                   <td style="background-color:#55acee"><input type="text" name="view[2][<%=video.id%>]" value="<%=video.source(2).view%>"></td>
