@@ -7,6 +7,19 @@ class Video < ActiveRecord::Base
   has_many  :snapvideos
   belongs_to  :celeb
 
+  def self.refresh_facebook
+
+    Clip.where(:source => 0).each do |facebook|
+
+      if facebook.source_id != nil
+        facebook.view = JSON.parse(open("https://graph.facebook.com/v2.4/#{Fbtoken.my_page}_#{facebook.source_id}/insights/post_video_views?access_token=#{Fbtoken.fresh}").read)["data"][0]["values"][0]["value"].to_i
+        facebook.save
+      end
+
+    end
+
+  end
+
   def snapshot(id)
     total = 0
     self.clips.each do |clip|

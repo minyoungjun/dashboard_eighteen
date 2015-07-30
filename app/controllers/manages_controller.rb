@@ -8,6 +8,9 @@ class ManagesController < ApplicationController
 
   def refresh_facebook
 
+    Video.refresh_facebook
+    render :text => "success"
+
   end
 
   def refresh_twitter
