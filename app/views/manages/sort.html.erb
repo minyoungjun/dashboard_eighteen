@@ -43,7 +43,7 @@
               </tr>
             </thead>
             <tbody>
-              <%@videos.each do |video|%>
+              <%Video.all.each do |video|%>
                 <tr>
                   <td><%=video.id%></td>
                   <td><%=video.title%></td>
