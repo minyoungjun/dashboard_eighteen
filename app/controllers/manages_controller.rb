@@ -81,7 +81,7 @@ class ManagesController < ApplicationController
       values.each do |video_id, value|
         video = Video.find(video_id)
         clip = video.source(source)
-        if (clip.view < value.to_i) || value.to_i == 0
+        if (clip.view < value.to_i) || value.to_i == 1
           clip.view = value.to_i
           clip.save
         end
