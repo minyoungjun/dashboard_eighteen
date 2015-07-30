@@ -1,0 +1,87 @@
+<style>
+  td input {
+    width:100px;
+  }
+</style>
+
+  <div class="breadcrumb clearfix">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+      <li><a href="index.html">Dashboard</a></li>
+      <li class="active">전체 영상</li>
+    </ul>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="page-header">
+    <h1>표 위쪽을 만지면 이것저것 정렬을 할 수 있습니다.</h1>
+  </div>
+  
+  <!-- Widget Row Start grid -->
+  <div class="row" id="powerwidgets">
+    <div class="col-md-12 bootstrap-grid"> 
+      
+      <!-- New widget -->
+      <div class="powerwidget" id="datatable-filter-column" data-widget-editbutton="false">
+        <header>
+          <h2>Datatable<small>Columns Filtering</small></h2>
+        </header>
+        <div class="inner-spacer">
+          <table class="display table table-striped table-hover" id="table-2">
+            <thead>
+              <tr>
+                <th>순번</th>
+                <th>title</th>
+                <th>출연자</th>
+                <th>Facebook</th>
+                <th>Twitter</th>
+                <th>Youtube</th>
+                <th>Everyshot</th>
+                <th>Naver</th>
+                <th>Kakao</th>
+                <th>All</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@videos.each do |video|%>
+                <tr>
+                  <td><%=video.id%></td>
+                  <td><%=video.title%></td>
+                  <td><%=video.celeb.name%></td>
+                  <td ><%=a = video.source(0).view%></td>
+                  <td ><%=b = video.source(2).view%></td>
+
+                  <td><%=c = video.source(1)%></td>
+                  <td><%=d = video.source(5)%></td>
+                  <td><%=e = video.source(3)%></td>
+                  <td><%=f = video.source(4)%></td>
+                  <td><%=a + b + c + d + e + f%></td>
+
+                </tr>
+              <%end%>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><input type="text" name="filter_game_name" placeholder="Filter Game Name" class="search_init" /></th>
+                <th><input type="text" name="filter_publisher" placeholder="Filter Publisher" class="search_init" /></th>
+                <th><input type="text" name="filter_platform" placeholder="Filter Platform" class="search_init" /></th>
+                <th><input type="text" name="filter_genre" placeholder="Filter Genre" class="search_init" /></th>
+                <th><input type="text" name="filter_sales" placeholder="Filter Sales" class="search_init" /></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- End .powerwidget --> 
+
+      
+    </div>
+    <!-- /Inner Row Col-md-12 --> 
+  </div>
+  <!-- /Widgets Row End Grid--> 
+    </form>
+
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables-bootstrap.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/dataTables.colVis.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/colvis.extras.js"></script> 
