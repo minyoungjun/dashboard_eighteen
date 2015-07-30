@@ -6,8 +6,8 @@
 <!--Breadcrumb-->
   <div class="breadcrumb clearfix">
     <ul>
-      <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li><a href="/">Dashboard</a></li>
       <li class="active">조회수 관리</li>
     </ul>
   </div>
@@ -131,8 +131,7 @@
           <div class="inner-spacer nopadding" style="background-color:#F06A93; color:white;">
             <div class="portlet-big-icon" style="padding-top:5px;padding-bottom:10px;"><i><img src="/images/everyshot.svg" style="height:50px;"/></i></div>
             <ul class="portlet-bottom-block">
-              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong><%=@video.source(5).view%></strong><small>view</small></li>
-              <li class="col-md-6 col-sm-6 col-xs-6" style="background:none;"><strong>211</strong><small><i class="fa fa-heart"></i> 좋아요</small></li>
+              <li class="col-md-12 col-sm-12 col-xs-12" style="background:none;"><strong><%=@video.source(5).view%></strong><small>view</small></li>
             </ul>
           </div>
         </div>
@@ -188,7 +187,6 @@
 
   if ($("#sns-chart").length) {
     
-
     <%@video.clips.each do |clip|%>
       <%all_array = Array.new%>
       <%count = 0%>
@@ -196,8 +194,10 @@
         <% snapclips = timing.snap.snapclips.where(:clip_id => clip.id)%>
         <%if snapclips.count != 0%>
           <%all_array << [count, snapclips.first.view]%>
-          <%count = count + 1%>
+        <%else%>
+          <%all_array << [count, 0]%>
         <%end%>
+        <%count = count + 1%>
       <%end%>
       var <%=@sources[clip.source]%> = <%=all_array.to_s%>;
 
@@ -229,8 +229,6 @@
                     data: everyshot,
                     label: "Everyshot"
                 },
-
-
 
 
             ], {
@@ -279,18 +277,18 @@
                 xaxis: {
                     color: "rgba(0,0,0,.1)",
                     ticks: [
-                        [1, "12시"],
-                        [2, "1시"],
-                        [3, "2시"],
-                        [4, "3시"],
-                        [5, "4시"],
-                        [6, "5시"],
-                        [7, "6시"],
-                        [8, "7시"],
-                        [9, "8시"],
-                        [10, "9시"],
-                        [11, "10시"],
-                        [12, "11시"]
+                        [1, "1시"],
+                        [2, "2시"],
+                        [3, "3시"],
+                        [4, "4시"],
+                        [5, "5시"],
+                        [6, "6시"],
+                        [7, "7시"],
+                        [8, "8시"],
+                        [9, "9시"],
+                        [10, "10시"],
+                        [11, "11시"],
+                        [12, "12시"]
                     ],
                     font: {
                         color: "#8b8f94",

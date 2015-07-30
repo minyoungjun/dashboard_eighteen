@@ -4,6 +4,11 @@ class Celeb < ActiveRecord::Base
   has_many  :videos
   has_many  :snapcelebs
 
+  def view_timing(id)
+
+  end
+
+
   def snapshot(id)
 
     total = 0
