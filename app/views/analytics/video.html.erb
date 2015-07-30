@@ -199,7 +199,9 @@
         <%end%>
         <%count = count + 1%>
       <%end%>
-      var <%=@sources[clip.source]%> = <%=all_array.to_s%>;
+      <%if clip.source != 6%>
+          var <%=@sources[clip.source]%> = <%=all_array.to_s%>;
+      <%end%>
 
       <%end%>
 
