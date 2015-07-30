@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get 'manages/refresh_twitter'
   get 'manages/refresh_facebook'
 
+  get 'manages/sort'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
