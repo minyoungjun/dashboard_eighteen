@@ -6,6 +6,23 @@ require 'twitter'
 
 class ManagesController < ApplicationController
 
+  before_filter :is_login, :except => ["login", "password"]
+
+  def login
+
+  end
+
+  def password
+
+    if params[:password] == "tlqvkfch#18"
+      session[:admin] = "true"
+      redirect_to :action => "index", :controller => "analytics"
+    else
+      redirect_to :action => "login"
+    end
+
+  end
+
   def refresh_facebook
 
     Video.refresh_facebook

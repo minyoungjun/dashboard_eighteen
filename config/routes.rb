@@ -40,6 +40,9 @@ Rails.application.routes.draw do
 
   get 'manages/sort'
 
+  get '/login' => "manages#login"
+  post 'manages/password'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,39 @@
+        
+        <div class="page-header">
+          <h1>로그인하기</h1>
+        </div>
+        
+        <!-- Widget Row Start grid -->
+        <div class="row" id="powerwidgets">
+          <div class="col-md-12 bootstrap-grid"> 
+            
+            <!-- New widget -->
+            
+            <div class="powerwidget cold-grey" data-widget-editbutton="false">
+
+              <header>
+                <h2>패스워드를 입력해주세요.</h2>
+              </header>
+
+              <div class="inner-spacer">
+                <form class="form-horizontal" role="form" action="/manages/password" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                  <fieldset>
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <input type="password" class="form-control" placeholder="password" name="password">
+                      </div>
+                      <div class="col-md-6">
+                        <input type="submit" class="btn btn-danger" value="로그인">
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <!-- End .powerwidget --> 
+            
+          </div>
+          <!-- /Inner Row Col-md-12 --> 
+        </div>
+        <!-- /Widgets Row End Grid--> 

@@ -4,6 +4,8 @@ require 'open-uri'
 require 'json'
 class AnalyticsController < ApplicationController
 
+  before_filter :is_login
+
   def profile
 
     @celeb = Celeb.find(params[:id])

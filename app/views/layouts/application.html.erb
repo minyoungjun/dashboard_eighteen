@@ -207,7 +207,8 @@
             </div>
           <%end%>
             
-            <!--User Chat Panel-->
+          <!--User Chat Panel-->
+          <%if session[:admin] == "true"%>
             <div class="tab-pane <%if @celeb == nil%>active<%end%>" id="userbar-two">
               <div class="chat-users-menu"> 
                 <!--Adding Some Scroll-->
@@ -223,7 +224,9 @@
                   </div>
                 </div>
               </div>
+
             </div>
+            <%end%>
             
             <!--User Tasks Panel-->
             <div class="tab-pane" id="userbar-three">
