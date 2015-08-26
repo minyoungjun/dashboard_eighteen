@@ -39,7 +39,7 @@
             <tbody>
               <%@timings.each do |timing|%>
                 <%@celebs.each do |celeb|%>
-                  <%celeb.videos.each do |video|%>
+                  <%celeb.videos.where(created_at: timing.snap.created_at..Time.now).each do |video|%>
                       <tr>
                         <td><%=timing.snap.created_at.in_time_zone("Asia/Seoul").strftime("%H:%M:%S")%></td>
                         <td><%=celeb.hashtag%></td>
