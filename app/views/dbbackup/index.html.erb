@@ -39,14 +39,13 @@
             <tbody>
               <%@timings.each do |timing|%>
                 <%@celebs.each do |celeb|%>
-                  <%celeb.videos.where(created_at: timing.snap.created_at..Time.now).each do |video|%>
+                  <%celeb.videos.where(created_at: (timing.snap.created_at - 1.day)..timing.snap.created_at).each do |video|%>
                       <tr>
                         <td><%=timing.snap.created_at.in_time_zone("Asia/Seoul").strftime("%H:%M:%S")%></td>
                         <td><%=celeb.hashtag%></td>
                         <td><%=video.title%></td>
                         </td>
                         <%video.clips.order(:source)[0..6].each do |clip|%>
-
                           <td><%=clip.snapclips.where(:snap_id => timing.snap.id).first.view%></td>
                         <%end%>
                         <td>
