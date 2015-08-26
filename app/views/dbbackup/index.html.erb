@@ -1,0 +1,84 @@
+  <div class="breadcrumb clearfix">
+    <ul>
+      <li><a href="/"><i class="fa fa-home"></i></a></li>
+      <li><a href="#">DB backup</a></li>
+    </ul>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="page-header">
+    <h1>시간대별로 데이터보여주는페이지</h1>
+  </div>
+  
+  <!-- Widget Row Start grid -->
+  <div class="row" id="powerwidgets">
+    <div class="col-md-12 bootstrap-grid"> 
+      
+      <!-- New widget -->
+      <div class="powerwidget" id="datatable-filter-column" data-widget-editbutton="false">
+        <header>
+          <h2>Datatable<small>Columns Filtering</small></h2>
+        </header>
+        <div class="inner-spacer">
+          <table class="display table table-striped table-hover" id="table-2">
+            <thead>
+              <tr>
+                <th>시간대</th>
+                <th>출연자</th>
+                <th>영상제목</th>
+                <th>Facebook</th>
+                <th>Youtube</th>
+                <th>Twitter</th>
+                <th>everyshot</th>
+                <th>Naver</th>
+                <th>Kakao</th>
+                <th>SBS</th>
+                <th>총합</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@timings.each do |timing|%>
+                <%@celebs.each do |celeb|%>
+                  <%celeb.videos.each do |video|%>
+                      <tr>
+                        <td><%=timing.snap.created_at.in_time_zone("Asia/Seoul").strftime("%H:%M:%S")%></td>
+                        <td><%=celeb.hashtag%></td>
+                        <td><%=video.title%></td>
+                        </td>
+                        <%video.clips.order(:source)[0..6].each do |clip|%>
+
+                          <td><%=clip.snapclips.where(:snap_id => timing.snap.id).first.view%></td>
+                        <%end%>
+                        <td>
+                          <%=video.snapvideos.where(:snap_id => timing.snap.id).first.view%>
+                        </td>
+                      </tr>
+                  <%end%>
+                <%end%>
+              <%end%>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th><input type="text" name="filter_game_name" placeholder="Filter Game Name" class="search_init" /></th>
+                <th><input type="text" name="filter_publisher" placeholder="Filter Publisher" class="search_init" /></th>
+                <th><input type="text" name="filter_platform" placeholder="Filter Platform" class="search_init" /></th>
+                <th><input type="text" name="filter_genre" placeholder="Filter Genre" class="search_init" /></th>
+                <th><input type="text" name="filter_sales" placeholder="Filter Sales" class="search_init" /></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <!-- End .powerwidget --> 
+
+      
+    </div>
+    <!-- /Inner Row Col-md-12 --> 
+  </div>
+  <!-- /Widgets Row End Grid--> 
+    </form>
+
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/jquery.dataTables-bootstrap.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/dataTables.colVis.js"></script> 
+<script type="text/javascript" src="/js/vendors/datatables/colvis.extras.js"></script> 

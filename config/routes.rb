@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #
-
 
   root 'analytics#index'
 
@@ -30,6 +28,10 @@ Rails.application.routes.draw do
   get 'analytics/video/:id' => "analytics#video"
   get 'analytics/index'
   get 'analytics/profile/:id' => "analytics#profile"
+
+
+  get 'db' => "dbbackup#index"
+
 
   get 'manages/snapshot'
   get 'manages/snaplist'
