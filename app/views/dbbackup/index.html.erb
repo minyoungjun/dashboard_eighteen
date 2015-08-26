@@ -46,7 +46,7 @@
                         <td><%=video.title%></td>
                         </td>
                         <%video.clips.order(:source)[0..6].each do |clip|%>
-                          <td><%=clip.snapclips.where(:snap_id => timing.snap.id).first.view%></td>
+                          <td><%snapclips = clip.snapclips.where(:snap_id => timing.snap.id)%><%if snapclips.count != 0%><%=snapclips.first.view%><%end%></td>
                         <%end%>
                         <td>
                           <%=video.snapvideos.where(:snap_id => timing.snap.id).first.view%>
